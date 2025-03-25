@@ -267,7 +267,7 @@ public class ThriftHiveMetaStoreClient implements IMetaStoreClient {
    * @return embedded client instance
    * @throws MetaException
    */
-  static ThriftHiveMetastore.Iface callEmbeddedMetastore(Configuration conf) throws MetaException {
+  public static ThriftHiveMetastore.Iface callEmbeddedMetastore(Configuration conf) throws MetaException {
     // Instantiate the metastore server handler directly instead of connecting
     // through the network
     //
@@ -618,7 +618,7 @@ public class ThriftHiveMetaStoreClient implements IMetaStoreClient {
   }
 
   @VisibleForTesting
-  protected HttpClientBuilder createHttpClientBuilder() throws MetaException {
+  public HttpClientBuilder createHttpClientBuilder() throws MetaException {
     HttpClientBuilder httpClientBuilder = HttpClientBuilder.create();
     String authType = MetastoreConf.getVar(conf, MetastoreConf.ConfVars.METASTORE_CLIENT_AUTH_MODE);
     Map<String, String> additionalHeaders = getAdditionalHeaders();
